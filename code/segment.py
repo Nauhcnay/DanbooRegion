@@ -93,7 +93,7 @@ if __name__=='__main__':
         image = cv2.imread(os.path.join(INPUT_DIR, img))
         h1 = image.shape[0]
         w1 = image.shape[1]
-        img_num, _, _ = img.split(".")[0]
+        img_num = img.split(".")[0]
         skeleton, region, flatten = segment(image)
         h2 = skeleton.shape[0]
         w2 = skeleton.shape[1]
