@@ -5,6 +5,9 @@
 /code/DanbooRegion2020/train/*.png
 /code/DanbooRegion2020/val/*.png
 /code/results/*.jpg
+/code/results/*.png
+/code/test
+/code/chuan
 saved_discriminator.net
 saved_model.net
 !.gitignore

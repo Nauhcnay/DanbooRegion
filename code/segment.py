@@ -1,6 +1,6 @@
 from tricks import *
 from ai import *
-
+from tqdm import tqdm
 
 def go_flipped_vector(x):
     a = go_vector(x)
@@ -83,13 +83,27 @@ def segment(image):
 
 
 if __name__=='__main__':
+    # let's gerenate GT from Pixiv dataset
+    INPUT_DIR = "DanbooRegion2020/train"
     import sys
-    image = cv2.imread(sys.argv[1])
-    skeleton, region, flatten = segment(image)
-    cv2.imwrite('./current_skeleton.png', skeleton)
-    cv2.imwrite('./current_region.png', region)
-    cv2.imwrite('./current_flatten.png', flatten)
-    print('./current_skeleton.png')
-    print('./current_region.png')
-    print('./current_flatten.png')
-    print('ok!')
+    # image = cv2.imread(sys.argv[1])
+    import os
+    for img in os.listdir(INPUT_DIR):
+        if "color" not in img: continue
+        image = cv2.imread(os.path.join(INPUT_DIR, img))
+        h1 = image.shape[0]
+        w1 = image.shape[1]
+        img_num, _, _ = img.split(".")[0]
+        skeleton, region, flatten = segment(image)
+        h2 = skeleton.shape[0]
+        w2 = skeleton.shape[1]
+        if h1 != h2 or w1 != w2:
+            skeleton = cv2.resize(skeleton, (w1, h1), interpolation = cv2.INTER_AREA)
+        cv2.imwrite(os.path.join(INPUT_DIR, img_num+"skeleton.png"), skeleton)
+    # cv2.imwrite('./current_skeleton.png', skeleton)
+    # cv2.imwrite('./current_region.png', region)
+    # cv2.imwrite('./current_flatten.png', flatten)
+    # print('./current_skeleton.png')
+    # print('./current_region.png')
+    # print('./current_flatten.png')
+    # print('ok!')
