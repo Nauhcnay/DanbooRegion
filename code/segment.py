@@ -88,7 +88,7 @@ if __name__=='__main__':
     import sys
     # image = cv2.imread(sys.argv[1])
     import os
-    for img in os.listdir(INPUT_DIR):
+    for img in tqdm(os.listdir(INPUT_DIR)):
         if "color" not in img: continue
         image = cv2.imread(os.path.join(INPUT_DIR, img))
         h1 = image.shape[0]
@@ -99,7 +99,9 @@ if __name__=='__main__':
         w2 = skeleton.shape[1]
         if h1 != h2 or w1 != w2:
             skeleton = cv2.resize(skeleton, (w1, h1), interpolation = cv2.INTER_AREA)
+            region = cv2.resize(region, (w1, h1), interpolation = cv2.INTER_AREA)
         cv2.imwrite(os.path.join(INPUT_DIR, img_num+".skeleton.png"), skeleton)
+        cv2.imwrite(os.path.join(INPUT_DIR, img_num+".region.png"), region)
     # cv2.imwrite('./current_skeleton.png', skeleton)
     # cv2.imwrite('./current_region.png', region)
     # cv2.imwrite('./current_flatten.png', flatten)
