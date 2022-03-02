@@ -99,7 +99,7 @@ if __name__=='__main__':
         w2 = skeleton.shape[1]
         if h1 != h2 or w1 != w2:
             skeleton = cv2.resize(skeleton, (w1, h1), interpolation = cv2.INTER_AREA)
-        cv2.imwrite(os.path.join(INPUT_DIR, img_num+"skeleton.png"), skeleton)
+        cv2.imwrite(os.path.join(INPUT_DIR, img_num+".skeleton.png"), skeleton)
     # cv2.imwrite('./current_skeleton.png', skeleton)
     # cv2.imwrite('./current_region.png', region)
     # cv2.imwrite('./current_flatten.png', flatten)
