@@ -8,6 +8,9 @@
 /code/results/*.png
 /code/test
 /code/chuan
+/code/train
+/code/result_argo
+/code/results_default
 saved_discriminator.net
 saved_model.net
 !.gitignore

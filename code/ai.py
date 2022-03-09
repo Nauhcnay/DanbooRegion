@@ -62,7 +62,8 @@ srcnn_op = srcnn(tf.pad(ip3 / 255.0, [[0, 0], [pads, pads], [pads, pads], [0, 0]
 session.run(tf.global_variables_initializer())
 
 print('begin load')
-vector.load_weights('DanbooRegion2020UNet.net')
+# vector.load_weights('DanbooRegion2020UNet.net')
+vector.load_weights('saved_model.net')
 srcnn.load_weights('srcnn.net')
 
 

@@ -84,12 +84,13 @@ def segment(image):
 
 if __name__=='__main__':
     # let's gerenate GT from Pixiv dataset
-    INPUT_DIR = "DanbooRegion2020/train"
+    INPUT_DIR = "test"
+    OUTPUT_DIR = "result_pixiv"
     import sys
     # image = cv2.imread(sys.argv[1])
     import os
     for img in tqdm(os.listdir(INPUT_DIR)):
-        if "color" not in img: continue
+        # if "color" not in img: continue
         image = cv2.imread(os.path.join(INPUT_DIR, img))
         h1 = image.shape[0]
         w1 = image.shape[1]
@@ -100,8 +101,8 @@ if __name__=='__main__':
         if h1 != h2 or w1 != w2:
             skeleton = cv2.resize(skeleton, (w1, h1), interpolation = cv2.INTER_AREA)
             region = cv2.resize(region, (w1, h1), interpolation = cv2.INTER_AREA)
-        cv2.imwrite(os.path.join(INPUT_DIR, img_num+".skeleton.png"), skeleton)
-        cv2.imwrite(os.path.join(INPUT_DIR, img_num+".region.png"), region)
+        cv2.imwrite(os.path.join(OUTPUT_DIR, img_num+".skeleton.png"), skeleton)
+        cv2.imwrite(os.path.join(OUTPUT_DIR, img_num+".region.png"), region)
     # cv2.imwrite('./current_skeleton.png', skeleton)
     # cv2.imwrite('./current_region.png', region)
     # cv2.imwrite('./current_flatten.png', flatten)
