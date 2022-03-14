@@ -63,7 +63,7 @@ session.run(tf.global_variables_initializer())
 
 print('begin load')
 # vector.load_weights('DanbooRegion2020UNet.net')
-vector.load_weights('saved_model.net')
+vector.load_weights('saved_model.pixiv.net')
 srcnn.load_weights('srcnn.net')
 
 
